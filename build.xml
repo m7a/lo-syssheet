@@ -7,7 +7,7 @@
 <property name="mdpc.descrs"    value="System Sheet Script, one-screen system overview"/>
 <property name="mdpc.arch"      value="all"/>
 <property name="mdpc.depends"   value="gawk, lsb-release"/>
-<property name="mdpc.conflicts" value="mdvl-scripts (<= 1.0.369)"/>
+<property name="mdpc.conflicts" value="mdvl-scripts (&lt;= 1.0.369)"/>
 <property name="mdpc.cpyear"    value="2012-2020"/>
 <property name="mdpc.descrl">
  Script `syssheet` displays information about the current system on a single

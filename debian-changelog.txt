@@ -1,0 +1,5 @@
+mdvl-syssheet (1.0.0) stable; urgency=medium
+
+  * Package created with MDPC 2
+
+ -- Linux-Fan, Ma_Sys.ma <Ma_Sys.ma@web.de>  Sun, 23 Feb 2020 15:34:16 +0100
