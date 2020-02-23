@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build">
+
+<!-- APPLICATION METADATA -->
+<property name="mdpc.name"      value="mdvl-syssheet"/>
+<property name="mdpc.section"   value="utils"/>
+<property name="mdpc.descrs"    value="System Sheet Script, one-screen system overview"/>
+<property name="mdpc.arch"      value="all"/>
+<property name="mdpc.depends"   value="gawk, lsb-release"/>
+<property name="mdpc.conflicts" value="mdvl-scripts (<= 1.0.369)"/>
+<property name="mdpc.cpyear"    value="2012-2020"/>
+<property name="mdpc.descrl">
+ Script `syssheet` displays information about the current system on a single
+ screen. It is intended to automatically run upon opening a new terminal or
+ SSH connection as to inform the user about the current state of the system.
+</property>
+
+<property name="mdpc.file.install">
+syssheet /usr/bin
+</property>
+
+<!-- CI INTEGRATION -->
+<target name="package_triggered" depends="package">
+	<property name="masysma.ci.trigger" value="newver"/>
+</target>
+
+<!-- CONSTANT TPL IMPORT -->
+<property environment="env"/>
+<condition property="masysma.internal.includepath.rel" value="${env.MDVL_CI_PHOENIX_ROOT}" else=".."><isset property="env.MDVL_CI_PHOENIX_ROOT"/></condition>
+<property name="masysma.internal.includepath" location="${masysma.internal.includepath.rel}"/>
+<property name="masysma.internal.loadpath" value="${masysma.internal.includepath}/co-build/ant-build-template.xml"/>
+<condition property="masysma.internal.load" value="file://${masysma.internal.loadpath}" else="https://raw.githubusercontent.com/m7a/co-build/master/ant-build-template.xml"><resourceexists><file file="${masysma.internal.loadpath}"/></resourceexists></condition>
+<import><url url="${masysma.internal.load}"/></import>
+
+</project>
