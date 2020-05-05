@@ -1,3 +1,9 @@
+mdvl-syssheet (1.0.3) stable; urgency=medium
+
+  * Rebuild package with new version 1.2.3.
+
+ -- Linux-Fan, Ma_Sys.ma <Ma_Sys.ma@web.de>  Tue, 05 May 2020 23:53:43 +0200
+
 mdvl-syssheet (1.0.2) stable; urgency=medium
 
   * Trigger rebuild.
