@@ -1,3 +1,9 @@
+mdvl-syssheet (1.0.4) stable; urgency=medium
+
+  * Display FS usage for ZFS, too. Improve performance.
+
+ -- Linux-Fan, Ma_Sys.ma <Ma_Sys.ma@web.de>  Mon, 28 Sep 2020 22:08:36 +0200
+
 mdvl-syssheet (1.0.3) stable; urgency=medium
 
   * Rebuild package with new version 1.2.3.

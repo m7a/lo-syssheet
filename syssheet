@@ -1,5 +1,5 @@
 #!/bin/sh
-# System Sheet Script 1.2.3, Copyright (c) 2012-2020 Ma_Sys.ma
+# System Sheet Script 1.2.4, Copyright (c) 2012-2020 Ma_Sys.ma
 # For further info send an e-mail to Ma_Sys.ma@web.de.
 
 if [ "$1" = "--help" ]
@@ -159,23 +159,39 @@ done
 ma_midtitle "File systems"
 ma_info "$(printf "$tblformat" Mountpoint "Used/GiB" "Of/GiB")" "Percentage"
 # Determine all device filesystems
-# Remember: Filesystem 1024-blocks Used Available Capacity Mounted on
-df -k -P | while read -r line; do
+# Remember: Filesystem Type 1024-blocks Used Available Capacity Mounted on
+df -k -P -T | while read -r line; do
 	# echo $line explaination
 	# 	No quotes! Removes additional spaces that would otherwise
 	#	conflict with cut's processing
-	mountpoint="$(echo $line | cut -d" " -f1)"
-	if echo "$mountpoint" | grep -q "^\/dev\/"; then
-		dir=$(echo $line | cut -d" " -f6)
-		used=$(($(echo $line | cut -d" " -f3) / 1024 / 1024))
-		of=$(($(echo $line | cut -d" " -f2) / 1024 / 1024))
+	splitlin="$(echo $line)"
+	mountpoint="${splitlin%% *}"
+	splitlin="${splitlin#* }"
+	ftstype="${splitlin%% *}"
+	mountpoint1="$(printf "%s" "$mountpoint" | cut -c-5)"
+	mountpoint2="$(printf "%s" "$mountpoint" | cut -c-9)"
+	if [ "$fstype" = "zfs" ] || { [ "$mountpoint1" = "/dev/" ] && \
+				! [ "$mountpoint2" = "/dev/loop" ]; }; then
+		splitlin="${splitlin#* }"
+		# f3
+		of=$((${splitlin%% *} / 1024 / 1024))
+		splitlin="${splitlin#* }"
+		# f4
+		used=$((${splitlin%% *} / 1024 / 1024))
+		splitlin="${splitlin#* }"
+		# f5
+		splitlin="${splitlin#* }"
+		# f6
+		percentage="${splitlin%% *}"
+		splitlin="${splitlin#* }"
+		# f7
+		dir="${splitlin%% *}"
 		# Double quote because of printf processing
-		percentage="$(echo $line | cut -d" " -f5)"
 		storhl=
-		[ "$(echo "$percentage" | cut -d % -f 1)" -le 90 ] || \
+		[ "$(printf "%s" "$percentage" | cut -d % -f 1)" -le 90 ] || \
 								storhl="$d_chl"
 		first_str="$(printf "$tblformat" $dir $used $of)"
-		if [ "$(echo "$first_str" | wc -m)" -gt 72 ]; then
+		if [ "$(printf "%s" "$first_str" | wc -c)" -gt 72 ]; then
 			first_str="$dir ($used/$of)"
 		fi
 		ma_info "$first_str" "$percentage" "" "$storhl"
