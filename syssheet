@@ -1,5 +1,5 @@
 #!/bin/sh
-# System Sheet Script 1.2.4, Copyright (c) 2012-2020 Ma_Sys.ma
+# System Sheet Script 1.2.5, Copyright (c) 2012-2020 Ma_Sys.ma
 # For further info send an e-mail to Ma_Sys.ma@web.de.
 
 if [ "$1" = "--help" ]
@@ -167,7 +167,7 @@ df -k -P -T | while read -r line; do
 	splitlin="$(echo $line)"
 	mountpoint="${splitlin%% *}"
 	splitlin="${splitlin#* }"
-	ftstype="${splitlin%% *}"
+	fstype="${splitlin%% *}"
 	mountpoint1="$(printf "%s" "$mountpoint" | cut -c-5)"
 	mountpoint2="$(printf "%s" "$mountpoint" | cut -c-9)"
 	if [ "$fstype" = "zfs" ] || { [ "$mountpoint1" = "/dev/" ] && \

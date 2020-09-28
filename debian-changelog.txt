@@ -1,3 +1,9 @@
+mdvl-syssheet (1.0.5) stable; urgency=medium
+
+  * Fix wrong spelling in fstype variable.
+
+ -- Linux-Fan, Ma_Sys.ma <Ma_Sys.ma@web.de>  Mon, 28 Sep 2020 22:13:33 +0200
+
 mdvl-syssheet (1.0.4) stable; urgency=medium
 
   * Display FS usage for ZFS, too. Improve performance.
