@@ -1,5 +1,5 @@
 #!/bin/sh
-# System Sheet Script 1.2.5, Copyright (c) 2012-2020 Ma_Sys.ma
+# System Sheet Script 1.2.6, Copyright (c) 2012-2020 Ma_Sys.ma
 # For further info send an e-mail to Ma_Sys.ma@web.de.
 
 if [ "$1" = "--help" ]
@@ -186,6 +186,10 @@ df -k -P -T | while read -r line; do
 		splitlin="${splitlin#* }"
 		# f7
 		dir="${splitlin%% *}"
+		# hide docker graph nodes which clutter the view
+		if echo "$dir" | grep -Eq '.*docker.*graph'; then
+			continue
+		fi
 		# Double quote because of printf processing
 		storhl=
 		[ "$(printf "%s" "$percentage" | cut -d % -f 1)" -le 90 ] || \
