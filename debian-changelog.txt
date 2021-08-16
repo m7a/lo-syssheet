@@ -1,3 +1,9 @@
+mdvl-syssheet (1.0.7) stable; urgency=medium
+
+  * Update for `altname` lines in `ip addr` output on Debian Bullseye.
+
+ -- Linux-Fan, Ma_Sys.ma <Ma_Sys.ma@web.de>  Mon, 16 Aug 2021 02:40:26 +0200
+
 mdvl-syssheet (1.0.6) stable; urgency=medium
 
   * Remove docker graph nodes from display.
