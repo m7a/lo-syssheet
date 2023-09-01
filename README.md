@@ -8,7 +8,7 @@ author: ["Linux-Fan, Ma_Sys.ma (Ma_Sys.ma@web.de)"]
 keywords: ["script", "mdvl", "syssheet"]
 x-masysma-version: 1.0.0
 x-masysma-repository: https://www.github.com/m7a/lo-syssheet
-x-masysma-website: https://masysma.lima-city.de/11/syssheet.xhtml
+x-masysma-website: https://masysma.net/11/syssheet.xhtml
 x-masysma-owned: 1
 x-masysma-copyright: |
   Copyright (c) 2012-2020 Ma_Sys.ma.
